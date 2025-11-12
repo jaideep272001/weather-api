@@ -2,6 +2,13 @@ let express = require('express')
 let app = express();
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send({
+        status : false, 
+        msg : "Please Enter a Place in Header"
+    })
+})
+
 app.get("/:id", async (req, res) => {
     let place = req.params.id;
     let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=5ab3501786a94ecca00130226251211&q=${place}&aqi=yes`)
